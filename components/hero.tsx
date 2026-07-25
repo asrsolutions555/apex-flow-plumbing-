@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronRight, AlertCircle } from 'lucide-react'
+import { ChevronRight, CircleAlert as AlertCircle } from 'lucide-react'
 import Image from 'next/image'
 
 interface HeroProps {
@@ -12,11 +12,11 @@ export function Hero({ onBookingClick }: HeroProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
 
   return (
-    <section className="relative min-h-screen pt-20 sm:pt-24 bg-gradient-to-b from-background via-background to-secondary/5 overflow-hidden">
+    <section className="relative min-h-screen pt-20 sm:pt-24 bg-gradient-to-b from-background via-background to-secondary/40 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl opacity-30"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/3 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl opacity-40"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
@@ -28,6 +28,15 @@ export function Hero({ onBookingClick }: HeroProps) {
                 <AlertCircle className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium text-accent">24/7 Emergency Service Available</span>
               </div>
+            </div>
+
+            {/* Live availability indicator */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-50 border border-green-200 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping-ring absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="animate-pulse-dot relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              <span className="text-sm font-medium text-green-700">Plumbers available now</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance leading-tight">
@@ -73,7 +82,7 @@ export function Hero({ onBookingClick }: HeroProps) {
 
           {/* Right Content - Image */}
           <div className="relative h-96 sm:h-full min-h-96 lg:min-h-screen flex items-center justify-center animate-slideInRight">
-            <div className="relative w-full h-full rounded-2xl overflow-hidden glass-light">
+            <div className="relative w-full h-full rounded-2xl overflow-hidden glass-light shadow-lg shadow-accent/5">
               <Image
                 src="/emergency-plumber.png"
                 alt="Emergency plumbing service technician at work"
@@ -86,7 +95,7 @@ export function Hero({ onBookingClick }: HeroProps) {
                 <div className="absolute inset-0 bg-secondary/50 animate-pulse" />
               )}
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-50"></div>
             </div>
           </div>
         </div>
